@@ -4,7 +4,7 @@ pipeline{
 		stage('POM File'){
 			steps{
 				withMaven(maven : 'mavenhome'){
-					sh 'mvn -f mvnproject/pom.xml clean install'
+					sh 'mvn -f mvnpoject/pom.xml clean install'
 				}
 			}
 		}

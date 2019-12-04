@@ -1,26 +1,33 @@
-pipeline {
-  agent any
-  stages {
-    stage ('Compiling'){
-    steps {
-      withMaven (maven : 'mavehome'){
-        sh 'maven clean compile'
-      }
-    }
-  }
-     stage ('Testing'){
-    steps {
-      withMaven (maven : 'mavehome'){
-        sh 'maven test'
-      }
-    }
-  }
-     stage ('Deploying'){
-    steps {
-      withMaven (maven : 'mavehome'){
-        sh 'maven Deploying'
-      }
-    }
-  }
- }
-}    
+pipeline{
+	agent any
+	stages{
+		stage('POM File'){
+			steps{
+				withMaven(maven : 'M2_HOME'){
+					sh 'mvn -f MvnDemo/pom.xml clean install'
+				}
+			}
+		}
+		stage('Compile Stage'){
+			steps{
+				withMaven(maven : 'M2_HOME'){
+					sh 'mvn -f MvnDemo/pom.xml clean compile'
+				}
+			}
+		}
+		stage('Testing Stage'){
+			steps{
+				withMaven(maven : 'M2_HOME'){
+					sh 'mvn -f MvnDemo/pom.xml test'
+				}
+			}
+		}
+		stage('Deployment Stage'){
+			steps{
+				withMaven(maven : 'M2_HOME'){
+					sh 'mvn -f MvnDemo/pom.xml deploy'
+				}
+			}
+		}
+	}
+}

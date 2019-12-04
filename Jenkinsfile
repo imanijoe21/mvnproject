@@ -11,14 +11,14 @@ pipeline{
 		stage('Compile Stage'){
 			steps{
 				withMaven(maven : 'mavenhome'){
-					sh 'mvn -f mvnproject/pom.xml clean compile'
+					sh 'mvn -f mvnpoject/pom.xml clean compile'
 				}
 			}
 		}
 		stage('Testing Stage'){
 			steps{
 				withMaven(maven : 'mavenhome'){
-					sh 'mvn -f mvnproject/pom.xml test'
+					sh 'mvn -f mvnpoject/pom.xml test'
 				}
 			}
 		}

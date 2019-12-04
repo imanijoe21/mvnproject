@@ -1,5 +1,6 @@
 pipeline {
 	agent any
+	
 	stages {
 		stage ('pom file') {
 			steps {
@@ -8,6 +9,7 @@ pipeline {
 				}
 			}
 		}
+		
 		stage ('Compile Stage') {
 			steps {
 				withMaven(maven : 'mavenhome') {
@@ -15,6 +17,7 @@ pipeline {
 				}
 			}
 		}
+		
 		stage ('Testing Stage') {
 			steps {
 				withMaven(maven : 'mavenhome') {

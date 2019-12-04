@@ -1,7 +1,7 @@
 pipeline {
 	agent any
 	stages {
-		stage ('POM File') {
+		stage ('pom File') {
 			steps {
 				withMaven(maven : 'mavenhome') {
 					sh 'mvn -f mvnproject/pom.xml clean install'

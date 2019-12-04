@@ -4,28 +4,28 @@ pipeline{
 		stage('POM File'){
 			steps{
 				withMaven(maven : 'mavenhome'){
-					sh 'mvn -f MvnDemo/pom.xml clean install'
+					sh 'mvn -f mvnproject/pom.xml clean install'
 				}
 			}
 		}
 		stage('Compile Stage'){
 			steps{
 				withMaven(maven : 'mavenhome'){
-					sh 'mvn -f MvnDemo/pom.xml clean compile'
+					sh 'mvn -f mvnproject/pom.xml clean compile'
 				}
 			}
 		}
 		stage('Testing Stage'){
 			steps{
 				withMaven(maven : 'mavenhome'){
-					sh 'mvn -f MvnDemo/pom.xml test'
+					sh 'mvn -f mvnproject/pom.xml test'
 				}
 			}
 		}
 		stage('Deployment Stage'){
 			steps{
 				withMaven(maven : 'mavenhome'){
-					sh 'mvn -f MvnDemo/pom.xml deploy'
+					sh 'mvn -f mvnproject/pom.xml deploy'
 				}
 			}
 		}

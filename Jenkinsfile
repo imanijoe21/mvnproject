@@ -1,22 +1,22 @@
-pipeline{
+pipeline {
 	agent any
-	stages{
+	stages {
 		stage('POM File') {
-			steps{
+			steps {
 				withMaven(maven : 'mavenhome') {
 					sh 'mvn -f mvnproject/pom.xml clean install'
 				}
 			}
 		}
 		stage('Compile Stage') {
-			steps{
+			steps {
 				withMaven(maven : 'mavenhome') {
 					sh 'mvn -f mvnproject/pom.xml clean compile'
 				}
 			}
 		}
 		stage('Testing Stage') {
-			steps{
+			steps {
 				withMaven(maven : 'mavenhome') {
 					sh 'mvn -f mvnproject/pom.xml test'
 				}

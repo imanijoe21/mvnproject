@@ -1,0 +1,55 @@
+pipeline{
+	agent any
+	stages{
+		stage('POM File'){
+			steps{
+				withMaven(maven : 'mavenhome'){
+					sh 'mvn -f mvnpoject/pom.xml clean install'
+				}
+			}
+		}
+		stage('Compile Stage'){
+			steps{
+				withMaven(maven : 'mavenhome'){
+					sh 'mvn -f mvnpoject/pom.xml clean compile'
+				}
+			}
+		}
+		stage('Testing Stage'){
+			steps{
+				withMaven(maven : 'mavenhome'){
+					sh 'mvn -f mvnpoject/pom.xml test'
+				}
+			}
+		}
+	}
+}
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Joe Magtech, Cop</title>
+	</head>
+	<body>
+		<nav>
+    		<ul>
+        		<li><a href="/">Home</a></li>
+	        	<li><a href="/about">About</a></li>
+        		<li><a href="/contact"></a>Contact</li>
+        		<li><a href="/blog">Blog</a></li>
+    		</ul>
+		</nav>
+		<div class="container">
+    		<div class="blurb">
+        		<h1>Hi there, I'm Joel Masham</h1>
+				<p>I'm the best known Devop <em>The Best One</em> You can trust me<a href="/about">Read more about my life...</a></p>
+    		</div><!-- /.blurb -->
+		</div><!-- /.container -->
+		<footer>
+    		<ul>
+        		<li><a href="mailto:joelmasham@yahoo.com">email</a></li>
+        		<li><a href="https://github.com/imanijoe21">github.com/hankquinlan</a></li>
+			</ul>
+		</footer>
+	</body>
+</html>
